@@ -47,18 +47,10 @@ Benchmark.bm 7 do |r|
 end
 
 Benchmark.bm 7 do |r|
-  array = []
-  n = 0
-  r.report "push" do
-    while n < 1_000_000 do
-      array.push(n)
-      n += 1
-    end
+  r.report “push” do
+    1_000_000.times do [].push(1) end
   end
-  r.report "<<" do
-    while  n < 1_000_000 do
-      array << n
-      n += 1
-    end
+  r.report “<<” do
+    1_000_000.times do [] <<1 end
   end
 end
